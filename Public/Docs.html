@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <title>𝐇𝐘𝐒𝐓𝐑𝐄𝐀𝐌 - 𝐀𝐏𝐈</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      background: #000;
+      color: #fff;
+    }
+
+    .video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    .video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    header.bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      z-index: 20;
+      backdrop-filter: blur(5px);
+    }
+
+    .menu-btn {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 26px;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.95);
+      padding-top: 60px;
+      transition: left 0.4s ease-in-out;
+      z-index: 30;
+    }
+
+    .menu.active {
+      left: 0;
+    }
+
+    .menu ul li {
+      padding: 15px 20px;
+      font-size: 18px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .menu ul li i {
+      margin-right: 10px;
+    }
+
+    .whatsapp-icon.support {
+      color: #25D366;
+      text-shadow: 0 0 10px #25D366, 0 0 20px #25D366;
+      animation: pulse 2s infinite;
+    }
+
+    .whatsapp-icon.channel {
+      color: #00E8FF;
+      text-shadow: 0 0 10px #00E8FF, 0 0 20px #00E8FF;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.1);
+      }
+    }
+
+    .boxs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 100px;
+      gap: 30px;
+      transition: opacity 1s ease;
+    }
+
+    .boxs.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .box, .box-key {
+      background: rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      border-radius: 15px;
+      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+    }
+
+    .box h1, .box-key span {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #00E8FF;
+      text-shadow: 0 0 5px #00E8FF;
+    }
+
+    #ip {
+      font-size: 20px;
+      color: #0ff;
+      text-shadow: 0 0 5px #0ff, 0 0 10px #0ff;
+      letter-spacing: 2px;
+      font-weight: bold;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid #00E8FF;
+      color: white;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .form-group button {
+      background: #00E8FF;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .form-group button:hover {
+      background: #00bcd4;
+    }
+
+    .yuta-channel {
+      position: fixed;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 16px;
+      font-weight: 600;
+      color: #00E8FF;
+      background: linear-gradient(135deg, rgba(0,232,255,0.15), rgba(0,0,0,0.6));
+      border: 2px solid #00E8FF;
+      box-shadow: 0 0 10px #00E8FF, 0 0 25px #00E8FF;
+      text-shadow: 0 0 5px #00E8FF, 0 0 15px #00E8FF;
+      border-radius: 12px;
+      padding: 10px 25px;
+      z-index: 9999;
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      animation: pulse 2.5s infinite;
+    }
+
+    .yuta-channel.hide {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <video src="https://files.catbox.moe/fiq9dy.mp4" autoplay muted loop></video>
+  </div>
+
+  <header class="bar">
+    <h1>𝐇𝐘𝐒𝐓𝐑𝐄𝐀𝐌 - 𝐀𝐏𝐈</h1>
+    <button class="menu-btn" onclick="toggleMenu()"><i class="bi bi-list"></i></button>
+  </header>
+
+  <div class="menu">
+    <ul>
+      <li onclick="window.location.href='https://wa.me/5591983721035'"><i class="bi bi-whatsapp whatsapp-icon support"></i>SUPORTE</li>
+      <li onclick="window.location.href='https://whatsapp.com/channel/0029ValLKgUAO7RCUU0dO03k'"><i class="bi bi-whatsapp whatsapp-icon channel"></i>CANAL</li>
+    </ul>
+  </div>
+
+  <div class="boxs" id="mainContent">
+    <div class="box">
+      <h1>SEU ENDEREÇO IP</h1>
+      <div id="ip">Carregando...</div>
+    </div>
+
+    <div class="box">
+      <h1>VISITAS DIÁRIAS</h1>
+      <a href="https://megacontador.com.br/">
+        <img src="https://megacontador.com.br/img-VNkDQJOR7qznIBQK-7.gif" alt="contador de visitas">
+      </a>
+    </div>
+
+    <div class="box-key">
+      <span>VERIFICAR SUA APIKEY</span>
+      <form action="/api/keyerrada">
+        <div class="form-group">
+          <input type="text" placeholder="Digite sua apikey" name="apikey" required />
+        </div>
+        <div class="form-group">
+          <button type="submit">VERIFICAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="yuta-channel" id="yutaChannel">© YUTA - CHANNEL</div>
+
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector(".menu");
+      const content = document.getElementById("mainContent");
+      const yuta = document.getElementById("yutaChannel");
+      menu.classList.toggle("active");
+      content.classList.toggle("hide");
+      yuta.classList.toggle("hide");
+    }
+
+    fetch("https://api.ipify.org?format=json")
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById("ip").textContent = data.ip;
+      })
+      .catch(err => {
+        document.getElementById("ip").textContent = "Erro ao obter IP";
+      });
+  </script>
+</body>
+    </html>
